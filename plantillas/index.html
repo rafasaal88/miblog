@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load django_markdown %}
+{% block contenido %}
+
+{% for elemento in lista %}
+
+
+    <div class="material tarjeta">
+
+    <span align="center"><h1><a href="/verentrada/{{elemento.id}}">{{elemento.title}}</a></h1> </span>
+    <span align="left">{{elemento.body|markdown}}</span>
+    
+    {% if user.is_authenticated and elemento.author == user %}
+    <span align="left">Publicado por ti el dia {{elemento.created}}</span>
+    <span>
+    <a class="GF-btn GF-btn-blue" href="/comentario/{{elemento.id}}">Comentar</a>
+    <a class="GF-btn GF-btn-blue" href="/editar/{{elemento.id}}">Editar</a>
+    <a class="GF-btn GF-btn-blue" href="/eliminar/{{elemento.id}}">Eliminar</a></span>
+
+    {% else %}
+    {% if user.is_authenticated %}
+    <span align="left">Autor: <a href="/verusuario/{{elemento.author}}">{{elemento.author}}</a></span>
+    <span align="left">Publicado: {{elemento.created}}</span>
+    <span><a class="GF-btn GF-btn-blue" href="/comentario/{{elemento.id}}">Comentar</a></span>
+    {% else %}
+    <span align="left">Autor: {{elemento.author}}</a></span>
+    <span align="left">Publicado: {{elemento.created}}</span>
+
+    
+    {% endif %} 
+    {% endif %}
+    
+    
+
+
+
+    
+    </div>
+
+{% for objeto in lista2 %}
+
+
+
+    <div class="material tarjeta">
+    <span align="left"><p><b>{{objeto.title}}</b></p></h1> </span>
+    <span align="left">{{objeto.body|markdown}}</a></span>
+
+
+    {% if user.is_authenticated%}
+
+        {% if objeto.user == user %}
+
+        <span align="left">Publicado por ti el dia {{objeto.created}}</span>
+
+        {% else %}
+        <span align="left">Publicado: {{objeto.created}} por <a href="/verusuario/{{objeto.user}}">{{objeto.user}}</a></span>
+
+        {% endif %}
+
+        {% if objeto.user == user %}
+        <span><a class="GF-btn GF-btn-blue" href="/editarcomentario/{{objeto.id}}/{{elemento.id}}">Editar</a><a class="GF-btn GF-btn-blue" href="/eliminarcomentario/{{objeto.id}}/{{elemento.id}}">Eliminar</a></span>
+        {% endif %}
+
+    {% else %}
+    <span align="left">Publicado: {{objeto.created}} por {{objeto.user}}</a></span>
+
+
+
+    {% endif %}
+
+    </div>
+
+
+
+{% endfor %}
+
+
+{% empty %}
+
+    <div class="material tarjeta">
+
+    <h2>No hay ninguna entrada</h2>
+    </div>
+
+{% endfor %}
+
+
+
+    <div class="material blogroll">
+    <span align="center"><h1>Contacta con nosotros: </h1>  
+    <a href="#"><img src="{{ STATIC_URL }}/images/gmail.jpg" width="55px" height="38px"></a>
+    <a href="#"><img src="{{ STATIC_URL }}/images/twitter.jpg" width="55px" height="40px"></a>
+    <a href="#"><img src="{{ STATIC_URL }}/images/facebook.jpg" width="45px" height="40px"></a>
+    <a href="#"><img src="{{ STATIC_URL }}/images/g+.jpg" width="45px" height="40px"></a>
+    </span>    
+    </div>
+
+    <div class="material base">
+    <span align="center"><h1>Otros blogs de interes: </h1>  
+    <a href="http://www.xataka.com"><img src="{{ STATIC_URL }}/images/xataka.jpg" width="40px" height="40px"></a>
+    <a href="http://www.applesfera.com"><img src="{{ STATIC_URL }}/images/applesfera.jpg" width="40px" height="40px"></a>
+    <a href="http://www.xatakandroid.com"><img src="{{ STATIC_URL }}/images/xatakandroid.jpg" width="40px" height="40px"></a>
+    <a href="http://www.xatakawindows.com"><img src="{{ STATIC_URL }}/images/xatakawindows.jpg" width="40px" height="40px"></a>
+    <a href="http://www.andro4all.com"><img src="{{ STATIC_URL }}/images/andro4all.jpg" width="80px" height="40px"></a>
+    <a href="http://www.xatakamovil.com/"><img src="{{ STATIC_URL }}/images/xatakamovil.jpg" width="40px" height="40px"></a>
+    <a href="http://www.20minutos.es/blogs_opinion/"><img src="{{ STATIC_URL }}/images/20minutos.jpg" width="40px" height="40px"></a>
+    </span>
+    </div>
+
+    <div class="material rss">
+    <span align="center"><h1>Suscribete: </h1>
+    <a href="#"><img src="{{ STATIC_URL }}/images/rss.jpg" width="106px" height="40px"></a>   
+    </span>
+    </div>
+
+    <div class="material tarjeta">
+    <span align="center"><p><b>Blog desarrollado en Django 1.7.9, realizado por Rafael Salido Álvarez</b></p> 
+    </span>
+    </div>
+
+
+{% endblock %}

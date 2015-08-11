@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block contenido %}
+
+
+<div class="material tarjeta">
+        <h3 align="center">Editar contraseña</h3>
+        <form id='formulario' enctype='multipart/form-data' method="post" action=''>{% csrf_token %}
+
+            <div class="element-wrapper">
+                <input type="password" name="password" required>
+                <label for="password">Nueva:</label>
+            </div>
+
+            <div class="element-wrapper">
+                <input type="password" name="password2" required>
+                <label for="password">Repita nueva contraseña:</label>
+            </div>
+
+            <div class="element-wrapper">                
+                <input type="submit" value="Registrar">
+            </div>
+
+        </form>    
+    </div>
+
+{% endblock %}

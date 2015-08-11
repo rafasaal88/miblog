@@ -1,0 +1,44 @@
+<!doctype html>
+
+<head>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/estilo.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="{{ STATIC_URL }}js/js.js"></script>
+</head>
+
+<body>
+
+{% if user.is_authenticated %}
+<nav class="material">
+  <a>Bienvenido {{user.username}}</a>
+  <a href="/">Inicio</a>
+  <a href="/usuarios">Usuarios</a>
+  <a href="/misentradas">Mis entradas</a>
+  <a href="/panelusuario">Panel usuario</a>
+  <a href="/cerrar">Cerrar sesión</a>
+</nav>
+{% else %}
+<nav class="material">
+  <a href="/">Inicio</a>
+  <a href="/usuarionuevo">Registrarse</a>
+  <a href="/ingresar">Iniciar Sesión</a>
+</nav>
+{% endif %}
+
+{% block contenido %}{% endblock %}
+    
+
+{% if user.is_authenticated %}
+<div class="mat-btn">
+  <ul>
+    <li><a class="spin-btn" href="/entrada"></a>
+    </li>
+  </ul>
+</div>
+{% endif %}
+
+
+
+
+</body>
+</html>

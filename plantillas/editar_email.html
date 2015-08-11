@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block contenido %}
+
+
+<div class="material tarjeta">
+        <h3 align="center">Editar email</h3>
+        <form id='formulario' enctype='multipart/form-data' method="post" action=''>{% csrf_token %}
+
+            <div class="element-wrapper">
+                <input type="email" name="email" required>
+                <label for="email">Nuevo email:</label>
+            </div>
+
+            <div class="element-wrapper">                
+                <input type="submit" value="Cambiar">
+            </div>
+
+        </form>    
+    </div>
+
+{% endblock %}

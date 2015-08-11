@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load django_markdown %}
+{% block contenido %}
+
+    <div class="material tarjeta">
+
+    <span align="center"><h2>Bandeja de salida</a></h2></span>
+    </div>
+
+{% for elemento in lista %}
+
+
+    <div class="material tarjeta">
+
+    <span align="center"><h1>Asunto: {{elemento.title}}</a></h1> </span>
+    <span align="center"><p>Mensaje: {{elemento.body|markdown}}</p></h1> </span>
+    <span align="left">Enviado a {{elemento.addressee}} el dia {{elemento.created}}</span>   
+    
+    </div>
+
+{% empty %}
+
+    <div class="material tarjeta">
+
+    <h2>No hay mensajes de salida</h2>
+    </div>
+
+{% endfor %}
+{% endblock %}

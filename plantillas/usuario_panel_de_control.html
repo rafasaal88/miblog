@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load django_markdown %}
+{% block contenido %}
+
+{% for elemento in lista %}
+   
+      <div class="material card">
+      <img alt="profile pic" src="{{ STATIC_URL }}/users/default.png">
+      <div class="right">
+        <h1>{{elemento.username}}</h1>
+        <span>Email: {{elemento.email}}</span>
+        <span>Twitter: </span>
+        <span><a class="GF-btn GF-btn-blue" href="/editar_contrasena">Cambiar contraseña</a></span>
+        <span><a class="GF-btn GF-btn-blue" href="/editar_email">Cambiar email</a></span>
+        <span><a class="GF-btn GF-btn-blue" href="/bandeja_entrada">Bandeja de entrada</a></span>
+        <span><a class="GF-btn GF-btn-blue" href="/bandeja_salida">Bandeja de salida</a></span>
+
+      </div>
+      </div>
+
+
+
+{% endfor %}
+
+
+
+
+{% endblock %}
