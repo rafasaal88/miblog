@@ -11,8 +11,8 @@
       <img alt="profile pic" src="{{ STATIC_URL }}/users/default.png">
       <div class="right">
         <h1>{{elemento.username}}</h1>
-        <span>Email: {{elemento.email}}</span>
-        <span>Twitter: </span>
+        <span><p>Registrado el {{elemento.date_joined}}<p></span>
+        <span><p>Última vez online el {{elemento.last_login}}<p></span>
         <span><a class="GF-btn GF-btn-blue" href="/nuevo_mensaje/{{elemento.username}}">Enviar mensaje</a></span>
       </div>
       </div>

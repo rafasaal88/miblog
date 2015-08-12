@@ -8,12 +8,23 @@
     <form  id='formulario' method='POST' enctype='multipart/form-data' action=''>{% csrf_token %}
         <p>Título: {{formulario.title}}</p>
         <p>Texto: {{formulario.body|markdown}}</p>
+        <p>Categoria: 
 
-
-
+        <select name="categoria">    
+        <option value="Android">Android</option>
+        <option value="iOs">iOs</option>
+        <option value="Windows Phone">Windows Phone</option>
+        </select>
+        </p>
         <p><input type='submit' value='Enviar' /></p>
     </form>   
     </div>
+
+
+
+
+
+
 
 
     <div class="material blogroll">

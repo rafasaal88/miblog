@@ -9,7 +9,7 @@ class EntradaForm(ModelForm):
 	class Meta:
 		model = Entry
 
-		fields = ('title', 'body')
+		fields = ('title', 'body', 'categoria')
 
 class EditarContrasenaForm(forms.Form):
     password = forms.CharField(

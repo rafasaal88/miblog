@@ -11,6 +11,7 @@ class Entry(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
 	author = models.ForeignKey(User)
+	categoria = models.CharField(max_length=200)
 
 	def __unicode__(self):
 		return self.title

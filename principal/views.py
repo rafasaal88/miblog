@@ -3,7 +3,7 @@
 from django.contrib.auth.hashers import make_password
 
 
-
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
@@ -103,6 +103,15 @@ def cerrar(request):
 
 def lista_entrada(request):
 	entradas = Entry.objects.all().order_by('created').reverse()
+	paginator = Paginator(entradas, 2)
+
+	try: page = int(request.GET.get("page", '1'))
+	except ValueError: page = 1
+
+	try:
+		entradas = paginator.page(page)
+	except (InvalidPage, EmptyPage):
+		entradas = paginator.page(paginator.num_pages)
 	return render_to_response('index.html',{'lista':entradas}, context_instance=RequestContext(request))
 
 @login_required(login_url='/ingresar')
@@ -129,7 +138,7 @@ def lista_usuarios(request):
 def ver_entrada(request, id_entrada):
 	entradas = Entry.objects.all().filter(id=id_entrada)
 	comentarios = Comentario.objects.all().filter(entry=id_entrada)
-	return render_to_response('index.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
+	return render_to_response('entrada.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
 
 @login_required(login_url='/ingresar')
 def ver_usuario(request, id_entrada):
@@ -187,7 +196,7 @@ def nuevocomentario(request, id_entrada):
 				comentario.save()
 				entradas = Entry.objects.all().filter(id=id_entrada)
 				comentarios = Comentario.objects.all().filter(entry=id_entrada)
-				return render_to_response('index.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))		
+				return render_to_response('entrada.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))		
 		else:
 			formulario=ComentarioForm()
 		return render_to_response('nuevo_comentario.html', {'formulario':formulario}, context_instance=RequestContext(request))
@@ -244,3 +253,7 @@ def bandeja_entrada(request):
 def bandeja_salida(request):
 	mensajes = Mensaje.objects.all().filter(user=request.user).order_by('created').reverse()
 	return render_to_response('bandeja_salida.html',{'lista':mensajes}, context_instance=RequestContext(request))
+
+def ver_categoria(request, nombre_categoria):
+	entradas = Entry.objects.all().filter(categoria=nombre_categoria)
+	return render_to_response('index.html',{'lista':entradas}, context_instance=RequestContext(request))

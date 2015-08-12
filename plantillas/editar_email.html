@@ -9,7 +9,7 @@
 <div class="material tarjeta">
         <h3 align="center">Editar email</h3>
         <form id='formulario' enctype='multipart/form-data' method="post" action=''>{% csrf_token %}
-
+        <span><h2>Email actual: {{user.email}}</h2></span>
             <div class="element-wrapper">
                 <input type="email" name="email" required>
                 <label for="email">Nuevo email:</label>

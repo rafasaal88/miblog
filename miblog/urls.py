@@ -26,4 +26,5 @@ urlpatterns = patterns('',
     url(r'^nuevo_mensaje/(?P<usuario>\S+)$', 'principal.views.nuevomensaje'),
     url(r'^bandeja_entrada/$', 'principal.views.bandeja_entrada'),
     url(r'^bandeja_salida/$', 'principal.views.bandeja_salida'),
+    url(r'^categoria/(?P<nombre_categoria>\S+)$', 'principal.views.ver_categoria'),
 )

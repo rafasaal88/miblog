@@ -2,7 +2,7 @@
 {% load django_markdown %}
 {% block contenido %}
 
-{% for elemento in lista.object_list %}
+{% for elemento in lista%}
 
     <div class="material tarjeta">
 
@@ -28,8 +28,54 @@
     
     {% endif %} 
     {% endif %}
-        
+    
+    
+
+
+
+    
     </div>
+
+
+
+
+{% for objeto in lista2 %}
+
+
+
+    <div class="material tarjeta">
+    <span align="left"><p><b>{{objeto.title}}</b></p></h1> </span>
+    <span align="left">{{objeto.body|markdown}}</a></span>
+
+
+    {% if user.is_authenticated%}
+
+        {% if objeto.user == user %}
+
+        <span align="left">Publicado por ti el dia {{objeto.created}}</span>
+
+        {% else %}
+        <span align="left">Publicado: {{objeto.created}} por <a href="/verusuario/{{objeto.user}}">{{objeto.user}}</a></span>
+
+        {% endif %}
+
+        {% if objeto.user == user %}
+        <span><a class="GF-btn GF-btn-blue" href="/editarcomentario/{{objeto.id}}/{{elemento.id}}">Editar</a><a class="GF-btn GF-btn-blue" href="/eliminarcomentario/{{objeto.id}}/{{elemento.id}}">Eliminar</a></span>
+        {% endif %}
+
+    {% else %}
+    <span align="left">Publicado: {{objeto.created}} por {{objeto.user}}</a></span>
+
+
+
+    {% endif %}
+
+    </div>
+
+
+
+{% endfor %}
+
 
 
 
@@ -42,25 +88,6 @@
 
 {% endfor %}
 
-{% if lista.object_list and lista.paginator.num_pages > 1 %}
-    <div class="material tarjeta">
-
-    <span align="left"><h1>Página {{ lista.number }} de {{ lista.paginator.num_pages }}</h1></span>
-
-        {% if lista.has_next %}
-    <a class="GF-btn GF-btn-blue" href="?page={{ lista.next_page_number }}">Entradas antiguas</a></span>
-    {% endif %}
-
-    {% if lista.has_previous %}
-    <a class="GF-btn GF-btn-blue" href="?page={{ lista.previous_page_number }}">Entradas nuevas</a>
-    {% endif %}
-
-
-
-
-    </div>
-
-{% endif %}
 
     <div class="material blogroll">
     <span align="center"><h1>Contacta con nosotros: </h1>  
