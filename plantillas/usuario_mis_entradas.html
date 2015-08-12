@@ -7,8 +7,7 @@
 
     <span align="center"><h1><a href="/verentrada/{{elemento.id}}">{{elemento.title}}</a></h1> </span>
     <span align="left">{{elemento.body|markdown}}</span>
-    <span align="left">Autor: {{elemento.author}}</span>
-    <span align="left">Publicado: {{elemento.created}}</span>
+    <span align="left">Publicado el {{elemento.created}} en <a href="/categoria/{{elemento.categoria}}">{{elemento.categoria}}</a></span></span>
     <span align="left"> <a class="GF-btn GF-btn-blue" href="/editar/{{elemento.id}}">Editar</a>
 
     <a class="GF-btn GF-btn-blue" href="/eliminar/{{elemento.id}}">Eliminar</a></span>

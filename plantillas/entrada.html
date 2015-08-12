@@ -2,7 +2,7 @@
 {% load django_markdown %}
 {% block contenido %}
 
-{% for elemento in lista%}
+{% for elemento in lista.object_list  %}
 
     <div class="material tarjeta">
 
@@ -87,6 +87,28 @@
     </div>
 
 {% endfor %}
+
+{% if lista.object_list and lista.paginator.num_pages > 1 %}
+    <div class="material tarjeta">
+
+    <span align="left"><h1>Página {{ lista.number }} de {{ lista.paginator.num_pages }}</h1></span>
+
+        {% if lista.has_next %}
+    <a class="GF-btn GF-btn-blue" href="?page={{ lista.next_page_number }}">Entradas antiguas</a></span>
+    {% endif %}
+
+    {% if lista.has_previous %}
+    <a class="GF-btn GF-btn-blue" href="?page={{ lista.previous_page_number }}">Entradas nuevas</a>
+    {% endif %}
+
+
+
+
+    </div>
+
+{% endif %}    
+
+
 
 
     <div class="material blogroll">
