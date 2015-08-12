@@ -16,4 +16,3 @@ class EntryAdmin(MarkdownModelAdmin):
 admin.site.register(models.Entry, EntryAdmin)
 admin.site.register(models.Comentario)
 admin.site.register(models.Mensaje)
-admin.site.register(models.Perfil)

@@ -37,10 +37,3 @@ class Mensaje(models.Model):
 	def __unicode__(self):
 		return self.title
 
-class Perfil(models.Model):
-	id = models.AutoField(primary_key=True)
-	user = models.ForeignKey(User, null=True, default=None)
-	twitter = models.CharField(max_length=250, blank=True)
-	avatar = models.ImageField(upload_to='avatares')
-	created = models.DateTimeField(auto_now_add=True)
-
