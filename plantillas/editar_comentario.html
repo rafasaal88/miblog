@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load django_markdown %}
+
+{% block contenido %}
+
+
+<div class="material tarjeta">
+    <form  id='formulario' method='POST' enctype='multipart/form-data' action=''>{% csrf_token %}
+        <p>Título: {{formulario.title}}</p>
+        <p>Texto: {{formulario.body|markdown}}</p>
+        <p><input type='submit' value='Enviar' /></p>
+    </form>   
+    </div>
+
+ <div class="material blogroll">
+    <span align="center"><h1>Contacta con nosotros: </h1>  
+    <a href="#"><img src="{{ STATIC_URL }}/images/gmail.jpg" width="55px" height="38px"></a>
+    <a href="#"><img src="{{ STATIC_URL }}/images/twitter.jpg" width="55px" height="40px"></a>
+    <a href="#"><img src="{{ STATIC_URL }}/images/facebook.jpg" width="45px" height="40px"></a>
+    <a href="#"><img src="{{ STATIC_URL }}/images/g+.jpg" width="45px" height="40px"></a>
+    </span>    
+    </div>
+
+    <div class="material base">
+    <span align="center"><h1>Otros blogs de interes: </h1>  
+    <a href="http://www.xataka.com"><img src="{{ STATIC_URL }}/images/xataka.jpg" width="40px" height="40px"></a>
+    <a href="http://www.applesfera.com"><img src="{{ STATIC_URL }}/images/applesfera.jpg" width="40px" height="40px"></a>
+    <a href="http://www.xatakandroid.com"><img src="{{ STATIC_URL }}/images/xatakandroid.jpg" width="40px" height="40px"></a>
+    <a href="http://www.xatakawindows.com"><img src="{{ STATIC_URL }}/images/xatakawindows.jpg" width="40px" height="40px"></a>
+    <a href="http://www.andro4all.com"><img src="{{ STATIC_URL }}/images/andro4all.jpg" width="80px" height="40px"></a>
+    <a href="http://www.xatakamovil.com/"><img src="{{ STATIC_URL }}/images/xatakamovil.jpg" width="40px" height="40px"></a>
+    <a href="http://www.20minutos.es/blogs_opinion/"><img src="{{ STATIC_URL }}/images/20minutos.jpg" width="40px" height="40px"></a>
+    </span>
+    </div>
+
+    <div class="material rss">
+    <span align="center"><h1>Suscribete: </h1>
+    <a href="#"><img src="{{ STATIC_URL }}/images/rss.jpg" width="106px" height="40px"></a>   
+    </span>
+    </div>
+
+    <div class="material tarjeta">
+    <span align="center"><p><b>Blog desarrollado en Django 1.7.9, realizado por Rafael Salido Álvarez</b></p> 
+    </span>
+    </div>
+
+
+
+{% endblock %}

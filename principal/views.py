@@ -102,6 +102,13 @@ def ver_categoria(request, nombre_categoria):
 	return render_to_response('entrada.html',{'lista':entradas}, context_instance=RequestContext(request))
 
 
+"""Ver una sola entrada"""
+def ver_entrada(request, id_entrada):
+	entradas = Entry.objects.all().filter(id=id_entrada)
+	comentarios = Comentario.objects.all().filter(entry=id_entrada)
+	return render_to_response('entrada.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
+
+
 """Registrar un nuevo usuario"""
 def nuevo_usuario(request):
 	if request.method=='POST':
@@ -161,13 +168,6 @@ def cerrar(request):
 def lista_usuarios(request):
 	entradas = User.objects.all().exclude(username=request.user).order_by('username')
 	return render_to_response('usuarios.html',{'lista':entradas}, context_instance=RequestContext(request))
-
-
-"""Ver una sola entrada"""
-def ver_entrada(request, id_entrada):
-	entradas = Entry.objects.all().filter(id=id_entrada)
-	comentarios = Comentario.objects.all().filter(entry=id_entrada)
-	return render_to_response('entrada.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
 
 
 """Ver un solo usuario"""
@@ -248,7 +248,8 @@ def eliminar_comentario(request, id_entrada, id_entrada2):
 		comentario.delete()
 		entradas = Entry.objects.all().filter(id=id_entrada2)
 		comentarios = Comentario.objects.all().filter(entry=id_entrada2)
-		return render_to_response('index.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
+
+		return render_to_response('entrada.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
 
 """Editar comentario"""
 @login_required(login_url='/ingresar')
@@ -262,10 +263,10 @@ def editar_comentario(request, id_entrada, id_entrada2):
 				formulario.save()
 				entradas = Entry.objects.all().filter(id=id_entrada2)
 				comentarios = Comentario.objects.all().filter(entry=id_entrada2)
-				return render_to_response('index.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
+				return render_to_response('entrada.html',{'lista':entradas, 'lista2':comentarios}, context_instance=RequestContext(request))
 		else:
 			formulario = ComentarioForm(instance=comentario)
-		return render_to_response('nueva_entrada.html', {'formulario':formulario}, context_instance=RequestContext(request))
+		return render_to_response('editar_comentario.html', {'formulario':formulario}, context_instance=RequestContext(request))
 	else:
 		return render_to_response('/ingresar', context_instance=RequestContext(request))
 
