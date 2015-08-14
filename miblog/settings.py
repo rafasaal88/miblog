@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 ADMINS = (
-       ('rafa' , 'rafasaal88@gmail.com')
+       ('rafasaal88' , 'acount@gmail.com')
     )
 
 
