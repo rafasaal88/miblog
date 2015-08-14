@@ -11,3 +11,5 @@ Updates necesarios para la siguiente versión:
 - Permitir la creación de nuevas secciones.
 - Pulir html, actualmente es responsive pero no se adapta 100% a los dispositivos móviles.
 - Aplicar css al panel de administración.
+- Permitir al usuario eliminar uno o varios mensajes de su bandeja de entrada/salida.
+- Implementar un notificador de nuevos mensajes privados.
