@@ -15,3 +15,4 @@ Updates necesarios para la siguiente versión:
 - Implementar un notificador de nuevos mensajes privados.
 - Insercción de imagenes en las publicaciones.
 - Fixear el panel de nueva entrada/comentario.
+- Modificar los templates para que el blogroll lo cargue desde un fichero y no tener redundancia en el código html.
