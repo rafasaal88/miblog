@@ -13,3 +13,5 @@ Updates necesarios para la siguiente versión:
 - Aplicar css al panel de administración.
 - Permitir al usuario eliminar uno o varios mensajes de su bandeja de entrada/salida.
 - Implementar un notificador de nuevos mensajes privados.
+- Insercción de imagenes en las publicaciones.
+- Fixear el panel de nueva entrada/comentario.
