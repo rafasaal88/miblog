@@ -4,3 +4,7 @@ Blog realizado en Django 1.7.9 por rafasaal88
 
 Diseño web en Material Design
 
+Updates necesarios para la siguiente versión:
+- Implementar avatares de usuarios
+- Permitir subscripción al blog por RSS
+- Permitir filtrar a traves de un calendario las entradas del blog
