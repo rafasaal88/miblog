@@ -2,27 +2,34 @@
 {% load django_markdown %}
 {% block contenido %}
 
-    <div class="material tarjeta">
-
-    <span align="center"><h2>Bandeja de entrada</a></h2></span>
+    <div class="col s1 m6">
+        <div class="card-panel blue lighten-5">
+            <div class="card-content black-text">
+                <span class="card-title">Bandeja de entrada</span>
+            </div>
+        </div>
     </div>
 
 {% for elemento in lista %}
-
-
-    <div class="material tarjeta">
-
-    <span align="center"><h1>Asunto: {{elemento.title}}</a></h1> </span>
-    <span align="center"><p>Mensaje: {{elemento.body|markdown}}</p></h1> </span>
-    <span align="left">Enviado por: {{elemento.user}} el dia {{elemento.created}}</span>   
-    <span><a class="GF-btn GF-btn-blue" href="/nuevo_mensaje/{{elemento.user}}">Responder</a></span>
+    <div class="col s1 m6">
+        <div class="card grey lighten-5">
+            <div class="card-content black-text">
+                <span align="left"><b>Asunto:</b> {{elemento.title}}</h1> </span>
+                <span align="left"><p>Mensaje: {{elemento.body|markdown}}</p></h1> </span>
+                <span align="left">Enviado por: {{elemento.user}} el dia {{elemento.created}}</span><br><br>   
+                <span><a class="waves-effect btn teal" href="/nuevo_mensaje/{{elemento.user}}"><i class="material-icons right">reply</i>Responder</a></span>
+            </div>
+        </div>
     </div>
 
+
 {% empty %}
-
-    <div class="material tarjeta">
-
-    <h2>No hay mensajes de entrada</h2>
+    <div class="col s1 m6">
+        <div class="card grey lighten-5">
+            <div class="card-content black-text">
+                <span class="card-title">No hay mensajes de entrada</span>
+            </div>
+        </div>
     </div>
 
 {% endfor %}
